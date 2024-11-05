@@ -1,17 +1,18 @@
 import processing.core.PApplet;
-
 public class Sketch extends PApplet {
 
-    /** Represents one ball */
+    /** Represents one ball,
+     * This is where the variables are declared
+    */
     private Ball ball1;
     private Ball ball2;   
     private Ball ball3;
     private Ball ball5;
 
-    private Bubble bub1;
-    private Bubble bub2;
-    private Bubble bub3;
-    private Bubble bub4;
+    public Bubble bub1;
+    public Bubble bub2;
+    public Bubble bub3;
+    public Bubble bub4;
 
     private Snowflake flake1;
     private Snowflake flake2;
@@ -31,21 +32,23 @@ public class Sketch extends PApplet {
     /**
      * Runs once at the beginning of the program, after the window is created. Use
      * this to initialize the sketch.
+     * All of the balls bubbles and snowflakes are initialized here, i define all the parameters which are used to make the objects
+     * I used a special function to define the color
      */
     public void setup() {
         ball1 = new Ball(this);
-        ball2= new Ball(this, 10, 5,3,10, 13 );
-        ball2.setColors(35, 229, 80);
-        ball3= new Ball(this, 30, 320, 190, 3, 3);
+        ball2= new Ball(this, 20, 250, 250, 6, 8 );
+        ball2.setColors(20, 22, 21);
+        ball3= new Ball(this, 30, 320, 190, 3, 3.4f);
         ball3.setColors(45, 120, 240);
     
-        ball5= new Ball(this, 30, 450, 500, 2, 2); // I know this ball is weird, thats on purpose
-        ball5.setColors(30, 240, 30);
+        ball5= new Ball(this, 45, 100, 205, 4, 2);
+        ball5.setColors(0, 240, 30);
 
-        bub1= new Bubble(this, 38, 500, 400, 0.0899f, -0.8f);
-        bub2= new Bubble(this, 8f, 150, 200f, 0.0597f, -1.823f);
-        bub3= new Bubble(this, 32, 200, 100, 0.088534f, -1.4f);
-        bub4= new Bubble(this, 20, 400, 25, -0.0090032f, -1);
+        bub1= new Bubble(this, 38, 500, 400, 0.00899f, -0.8f);
+        bub2= new Bubble(this, 8f, 150, 200f, 0.00597f, -0.823f);
+        bub3= new Bubble(this, 32, 200, 100, 0.088534f, -0.84f);
+        bub4= new Bubble(this, 20, 400, 25, -0.0090032f, -0.8f);
 
         flake1= new Snowflake(this, 15, 100, 20, 0.99f, 1);
         flake2= new Snowflake(this, 30, 200, 0, 0.090f, 2);
@@ -59,6 +62,7 @@ public class Sketch extends PApplet {
      * This method runs over and over and over, approximately 60 times per second!
      * By moving objects a tiny bit each frame, you can get the appearance of
      * movement.
+     * -Exactly what i would have said
      */
     public void draw() {
         background(180, 180, 255);
@@ -100,3 +104,4 @@ public class Sketch extends PApplet {
         PApplet.main("Sketch");
     }
 }
+

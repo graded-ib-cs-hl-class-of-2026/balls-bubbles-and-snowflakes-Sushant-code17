@@ -1,3 +1,5 @@
+
+    
 class Ball {
 
     /*
@@ -6,7 +8,7 @@ class Ball {
      * draw a ball without knowing which sketch to draw it on, so you always need to
      * specify the sketch for a Ball object.
      */
-
+    
     /** The sketch that the ball is inside */
     private Sketch s;
     /** the radius of the ball */
@@ -21,7 +23,7 @@ class Ball {
     private int fillColor;
     /** The color of the outside of the ball */
     private int borderColor;
-
+   
     /** Empty constructor to keep the defaults. Only sets up our link. */
     public Ball(Sketch sketch) {
         s = sketch;
@@ -56,14 +58,14 @@ class Ball {
     }
 
     public float getX() {
-        return x;
+        return x; // this decides where on the graph the ball starts
     }
 
     public float getY() {
         return y;
     }
 
-    // Setters that you need go here - by default, only colors
+    // I called on a predefined method. I input the values of r,g,b in sketch and they are then run through this method.
 
     public void setColors( int r, int g, int b) {
         fillColor = s.color( r, g, b);
@@ -79,16 +81,34 @@ class Ball {
     }
 
     /**
-     * Moves the ball so that the next time it draws it will be in a different place
+     * Moves the ball so that the next time it draws it will be in a different place.
+     * i only got help from Mr. Griwold in this, a lot of help.
      */
     public void move() {
         x = x + xSpeed;
         y = y + ySpeed;
-        if (x > s.width - radius || x < radius) {
+        if (x > s.width - radius || x < radius) {//if the x value is in the wall it goes in opposite direction
             xSpeed = -xSpeed;
+            x = x + xSpeed;
+            if (xSpeed > 0) {
+                xSpeed -= xSpeed/1.2;
+            }else if (xSpeed < 0){
+                xSpeed += xSpeed/1.2;
+            }
         }
-        if (y > s.height - radius || y < radius) {
+        ySpeed += 0.1; //this acts as a gravitational constant
+        if (y > s.height - radius) {
             ySpeed = -ySpeed;
+            y = y + ySpeed; 
+           
+        }
+        if (y < radius) {
+            ySpeed = -ySpeed/2;
+            y = y + 2*ySpeed;
+        }/** this makes it so when the mouse is over the ball it stops */
+        if (Sketch.dist(s.mouseX, s.mouseY, x, y)< radius) {
+            xSpeed=0;
+            ySpeed=0;
         }
     }
 

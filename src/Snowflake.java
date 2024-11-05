@@ -16,7 +16,7 @@ class Snowflake {
      /** The color of the outside of the ball */
      private int borderColor;
  
-     /** Empty constructor to keep the defaults. Only sets up our link. */
+     /** Same constructors as the ball ones */
      public Snowflake(Sketch sketch) {
          s = sketch;
          radius = 20;
@@ -65,6 +65,7 @@ class Snowflake {
  
      /**
       * Moves the snowflake so that the next time it draws it will be in a different place
+      * I used the ball code but made it so that instead of bouncing, upon reaching the bottom it goes back to the top
       */
  
       public void move() {
@@ -79,7 +80,7 @@ class Snowflake {
     }
 
   
-
+/** just draws the flake of snow every frame*/
     public void draw() {
         s.line(x+radius,y,x-radius,y);
         s.line(x,y+radius,x,y-radius);

@@ -9,7 +9,7 @@ private int fillColor;
 private float xSpeed;
 private float ySpeed;
 private Sketch s;
-    //MISSING CONSTRUCTORS
+    /** Same as the ball constructor */
     public Bubble(Sketch sketch, float radius, float x, float y, float xspeed, float yspeed) {
         this.s = sketch;
         this.radius = radius;
@@ -19,7 +19,7 @@ private Sketch s;
         this.ySpeed = yspeed;
         this.fillColor= s.color(255, 255, 255, 36);
     }
-    // accessors for the radius, diameter, x, and y values 
+    /** accessors for the radius, diameter, x, and y values */
     public float getRadius() {
         return radius;
     }
@@ -41,19 +41,22 @@ private Sketch s;
         s.fill(fillColor);
         s.circle(x, y, radius*2);
     }
-
+/**this shows how the bubble moves */ 
     public void move() {
         x = x + xSpeed;
         y = y + ySpeed;
-        if (x > s.width - radius) {
-            x = radius;
-        } else if(x < radius) {
-            x = s.width - radius;
-        } else if (y > s.height - radius) {
-            y = radius;
-        } else if (y < radius) {
-            y = s.height - radius;
-        }
+        if (x > s.width + radius) {
+            x = -radius;
+        } else if(x < -radius) {
+            x = s.width + radius;
+        } else if (y > s.height + radius) {
+            y = -radius;
+        } else if (y < -radius) {
+            y = s.height+ radius;
+        }/** this makes it so when the mouse is over the bubble it pops and goes back to y=0 */
+        if (Sketch.dist(s.mouseX, s.mouseY, x, y)< radius) {
+            y=s.height+radius;
     }
 
+}
 }
